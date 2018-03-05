@@ -1,10 +1,19 @@
 <?php
 
-namespace Tests;
+class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+	/**
+	 * Creates the application.
+	 *
+	 * @return \Illuminate\Foundation\Application
+	 */
+	public function createApplication()
+	{
+		$app = require __DIR__.'/../bootstrap/app.php';
 
-abstract class TestCase extends BaseTestCase
-{
-    use CreatesApplication;
+		$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+
+		return $app;
+	}
+
 }
